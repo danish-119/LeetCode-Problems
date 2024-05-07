@@ -6,9 +6,17 @@ public static void main(String[] args) {
     System.out.println(removeElement(nums, 2)); 
 }
 
-public static int removeElement(int[] nums, int val) {
-    
-    return val;    
+public static byte removeElement(int[] nums, int val) {
+    byte count = 0;
+    byte newIndex = 0;
+    for(byte i = 0; i < nums.length; i++){
+        if(nums[i] != val){
+            nums[newIndex++] = nums[i];
+            count++;
+        }
+    }
+
+    return count;    
 }
     
 }
