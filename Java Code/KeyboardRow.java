@@ -1,4 +1,5 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KeyboardRow {
     public static void main(String[] args) {
@@ -11,50 +12,37 @@ public class KeyboardRow {
     }
 
     public static String[] findWords(String[] words) {
-        String[] arr = { "", "", "" }; // Initialize elements to empty strings
-        for (int i = 0; i < words.length; i++) {
+        List<String> result = new ArrayList<>();
+        String[] rows = { "qwertyuiop", "asdfghjkl", "zxcvbnm" };
 
-            String word = words[i];
-            for (int j = 0; j < word.length(); j++) {
-                switch (word.charAt(j)) {
-                    case 'q':
-                    case 'w':
-                    case 'e':
-                    case 'r':
-                    case 't':
-                    case 'y':
-                    case 'u':
-                    case 'i':
-                    case 'o':
-                    case 'p':
-                        arr[0] += word.charAt(j);
-                        break;
-                    case 'a':
-                    case 's':
-                    case 'd':
-                    case 'f':
-                    case 'g':
-                    case 'h':
-                    case 'j':
-                    case 'k':
-                    case 'l':
-                        arr[1] += word.charAt(j);
-                        break;
-                    case 'z':
-                    case 'x':
-                    case 'c':
-                    case 'v':
-                    case 'b':
-                    case 'n':
-                    case 'm':
-                        arr[2] += word.charAt(j);
-                        break;
-                    default:
-                        break;
+        for (String word : words) {
+            boolean sameRow = true;
+            String lowercaseWord = word.toLowerCase();
+            int row = -1;
+
+            // Find the row of the first character of the word
+            for (int i = 0; i < rows.length; i++) {
+                if (rows[i].contains(String.valueOf(lowercaseWord.charAt(0)))) {
+                    row = i;
+                    break;
                 }
             }
 
+            // Check if all characters belong to the same row
+            for (int i = 1; i < word.length(); i++) {
+                if (!rows[row].contains(String.valueOf(lowercaseWord.charAt(i)))) {
+                    sameRow = false;
+                    break;
+                }
+            }
+
+            // If all characters are in the same row, add the word to the result
+            if (sameRow) {
+                result.add(word);
+            }
         }
-        return arr;
+
+        return result.toArray(new String[0]);
     }
+
 }
