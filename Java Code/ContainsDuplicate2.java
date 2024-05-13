@@ -1,8 +1,15 @@
 import java.util.HashMap;
 
 public class ContainsDuplicate2 {
+    public static void main(String[] args) {
 
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        int[] nums = { 1, 0, 1, 1 };
+        int k = 1;
+        new ContainsDuplicate2();
+        System.out.println(ContainsDuplicate2.containsNearbyDuplicate(nums, k));
+    }
+
+    public static boolean containsNearbyDuplicate(int[] nums, int k) {
         // Map to store the last index of each number
         HashMap<Integer, Integer> numIndexMap = new HashMap<>();
 
