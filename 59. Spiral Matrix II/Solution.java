@@ -14,7 +14,7 @@ class Solution {
         int[][] matrix = new int[n][n];
         int top = 0, bottom = n - 1, left = 0, right = n - 1;
         int num = 1;
-        
+
         while (num <= n * n) {
             for (int i = left; i <= right; i++) {
                 matrix[top][i] = num++;
