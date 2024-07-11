@@ -1,15 +1,17 @@
-import java.util.HashMap;
-
 class Solution {
-    public int titleToNumber(String columnTitle) {
-        HashMap<Character, Integer> alphabetMap = new HashMap<>();
+    public static void main(String[] args) {
+        System.out.println(new Solution().titleToNumber("ZY"));
+    }
 
-         for (char ch = 'a'; ch <= 'z'; ch++) {
-          int number = ch - 'a' + 1;
-            alphabetMap.put(ch, number);
+    public int titleToNumber(String columnTitle) {
+        int result = 0;
+
+        for (int i = 0; i < columnTitle.length(); i++) {
+            char ch = columnTitle.charAt(i);
+            int value = ch - 'A' + 1;
+            result = result * 26 + value;
         }
 
-        byte len = (byte) columnTitle.length();
-        return len;
+        return result;
     }
 }
