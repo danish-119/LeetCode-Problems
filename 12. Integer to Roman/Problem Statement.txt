@@ -1,8 +1,6 @@
 12. Integer to Roman
-Solved
 Medium
-Topics
-Companies
+
 Seven different symbols represent Roman numerals with the following values:
 
 Symbol	Value
@@ -13,6 +11,7 @@ L	50
 C	100
 D	500
 M	1000
+
 Roman numerals are formed by appending the conversions of decimal place values from highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:
 
 If the value does not start with 4 or 9, select the symbol of the maximal value that can be subtracted from the input, append that symbol to the result, subtract its value, and convert the remainder to a Roman numeral.
@@ -21,38 +20,30 @@ Only powers of 10 (I, X, C, M) can be appended consecutively at most 3 times to 
 Given an integer, convert it to a Roman numeral.
 
  
-
 Example 1:
-
 Input: num = 3749
-
 Output: "MMMDCCXLIX"
 
 Explanation:
-
 3000 = MMM as 1000 (M) + 1000 (M) + 1000 (M)
  700 = DCC as 500 (D) + 100 (C) + 100 (C)
   40 = XL as 10 (X) less of 50 (L)
    9 = IX as 1 (I) less of 10 (X)
 Note: 49 is not 1 (I) less of 50 (L) because the conversion is based on decimal places
+
 Example 2:
-
 Input: num = 58
-
 Output: "LVIII"
 
 Explanation:
-
 50 = L
  8 = VIII
+
 Example 3:
-
 Input: num = 1994
-
 Output: "MCMXCIV"
 
 Explanation:
-
 1000 = M
  900 = CM
   90 = XC
@@ -60,5 +51,4 @@ Explanation:
  
 
 Constraints:
-
 1 <= num <= 3999
