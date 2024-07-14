@@ -1,12 +1,13 @@
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Solution
 {
 public:
-    bool isNumber(string s)
+    static bool isNumber(string s)
     {
-        if (s.empty())
+        if (s.empty() || s[0] == 'e' || s[0] == '.')
         {
             return false;
         }
@@ -16,7 +17,7 @@ public:
         short count_sign = 0;
         for (char ch : s)
         {
-            if (!isdigit(ch) && ch != 'e' && ch != 'E' && ch != '.' && ch != '+' && ch != '-' || count_e > 1 || count_dot > 1 || count_sign > 1 || s[0] == 'e' || s[0] == '.')
+            if (!isdigit(ch) && ch != 'e' && ch != 'E' && ch != '.' && ch != '+' && ch != '-' || count_e > 1 || count_dot > 1 || count_sign > 2)
             {
                 return false;
             }
@@ -33,7 +34,35 @@ public:
                 count_sign++;
             }
         }
+        if (count_e == 1 && count_dot == 1)
+        {
+            count_dot = 0, count_e = 0;
+            short i = 0;
+            while (count_e != 1)
+            {
+                if (s[i] == 'e' || s[i] == 'E')
+                {
+                    count_e++;
+                }
+                if (s[i] == '.')
+                {
+                    count_dot++;
+                }
+                if (count_dot == 0 && count_e == 1)
+                {
+                    return false;
+                }
+                i++;
+            }
+        }
 
         return true;
     }
 };
+
+int main(int argc, char const *argv[])
+{
+    Solution s;
+    cout << s.isNumber("123e104");
+    return 0;
+}
